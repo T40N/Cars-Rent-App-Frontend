@@ -3,25 +3,58 @@ import {
   ACCESS_LEVEL_ADMIN,
   ACCESS_LEVEL_NORMAL_USER,
   ACCESS_LEVEL_GUEST,
+  SERVER_HOST,
 } from "../config/global_constants";
+import axios from "axios";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const Menu = (props) => {
+  const [redirtect, setRedirect] = useState(false);
+
+  const onLogoutHandler = () => {
+    axios.defaults.withCredentials = true; // needed for sessions to work
+    axios.post(`${SERVER_HOST}/users/logout`).then((res) => {
+      if (res.data) {
+        if (res.data.errorMessage) {
+          console.log(res.data.errorMessage);
+        } else {
+          console.log("User logged out");
+          sessionStorage.clear();
+          sessionStorage.name = "GUEST";
+          sessionStorage.accessLevel = ACCESS_LEVEL_GUEST;
+          setRedirect(true);
+        }
+      } else {
+        console.log("Logout failed");
+      }
+    });
+  };
+
   return (
     <>
-      {sessionStorage.accessLevel === ACCESS_LEVEL_GUEST ? (
+      {redirtect ? (
         <>
-          <Link to="/loginpage">Login</Link>
+          <Navigate to="/" /> {setRedirect(false)}
+        </>
+      ) : null}
+      {sessionStorage.accessLevel == ACCESS_LEVEL_GUEST ? (
+        <>
+          <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </>
       ) : null}
-      {sessionStorage.accessLevel === ACCESS_LEVEL_NORMAL_USER ? (
+      {sessionStorage.accessLevel == ACCESS_LEVEL_NORMAL_USER ? (
         <>
           <Link to="/profile">Profile</Link>
           <Link to="/cart">Cart</Link>
         </>
       ) : null}
-      {sessionStorage.accessLevel === ACCESS_LEVEL_ADMIN ? (
+      {sessionStorage.accessLevel == ACCESS_LEVEL_ADMIN ? (
         <Link to="/admin">Admin Page</Link>
+      ) : null}
+      {sessionStorage.accessLevel >= ACCESS_LEVEL_NORMAL_USER ? (
+        <button onClick={onLogoutHandler} value="LogOut" name="logout" />
       ) : null}
     </>
   );

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import {SERVER_HOST} from "../config/global_constants"
+import { SERVER_HOST } from "../config/global_constants";
+import Header from "./Header";
 
 const Register = () => {
   const [registerData, setRegisterData] = useState({
@@ -53,6 +54,7 @@ const Register = () => {
 
   return (
     <div>
+      <Header />
       {isRegistered ? <Navigate to="/" /> : null}
       <form onSubmit={onSubmitHandler}>
         <input

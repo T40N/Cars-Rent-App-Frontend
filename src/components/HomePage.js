@@ -14,7 +14,7 @@ const HomePage = () => {
   }, [carsChanged]);
 
   const onSearchHandler = (searchedName) => {
-    if (searchedName.trim()) {
+    if (searchedName.trim() === "") {
       setCarsChanged((prevCarsChanged) => {
         return !prevCarsChanged;
       });

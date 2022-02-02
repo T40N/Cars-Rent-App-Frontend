@@ -10,7 +10,7 @@ const SearchBar = (props) => {
   return (
     <form onSubmit={onSubmitHandler}>
       <h4>Search</h4>
-      <input type="text" name="search" placeholder="search" />
+      <input type="text" name="search" placeholder="search" ref={ref} />
       <input type="submit" value="Search" />
     </form>
   );

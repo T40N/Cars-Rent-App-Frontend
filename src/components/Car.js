@@ -14,7 +14,11 @@ const Car = (props) => {
 
   return (
     <div>
-      {redirect ? <Navigate to="/" /> : null}
+      {redirect ? (
+        <>
+          <Navigate to="/" /> {setRedirect(false)}{" "}
+        </>
+      ) : null}
       <h1>{props.name}</h1>
       <h3>Miles per galon: {props.miles}</h3>
       <h3>Cylinders: {props.cylinders}</h3>

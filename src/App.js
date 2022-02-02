@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Cart from "./components/Cart";
 import { ACCESS_LEVEL_GUEST } from "./config/global_constants";
 import PayPalMessage from "./components/PayPalMessage";
 
@@ -18,9 +19,10 @@ function App() {
         <Route path="*" element={<HomePage />} />
         <Route exac path="/login" element={<Login />} />
         <Route exac path="/register" element={<Register />} />
+        <Route exac path="/cart" element={<Cart />} />
         <Route
           exact
-          path="/PayPalMessage/:messageType/:payPalPaymentID"
+          path="/PayPalMessage"
           element={<PayPalMessage />}
         />
       </Routes>

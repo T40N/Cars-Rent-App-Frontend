@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SERVER_HOST } from "../config/global_constants";
 import { Navigate } from "react-router-dom";
+import Header from "./Header";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -36,7 +37,7 @@ const Login = () => {
             console.log("User logged in");
 
             sessionStorage.name = res.data.name;
-            sessionStorage.email = this.state.email;
+            sessionStorage.email = loginData.email;
             localStorage.token = res.data.token;
             sessionStorage.accessLevel = res.data.accessLevel;
 
@@ -51,6 +52,7 @@ const Login = () => {
   return (
     <div>
       {isLoggedIn ? <Navigate to="/" /> : null}
+      <Header />
       <form onSubmit={onSubmitHandler}>
         <input
           type="email"
