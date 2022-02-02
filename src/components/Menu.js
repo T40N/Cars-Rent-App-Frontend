@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import "./style.css"
 
 const Menu = (props) => {
   const [redirtect, setRedirect] = useState(false);
@@ -32,7 +33,7 @@ const Menu = (props) => {
   };
 
   return (
-    <>
+    <div className="menu">
       {redirtect ? (
         <>
           <Navigate to="/" /> {setRedirect(false)}
@@ -56,7 +57,7 @@ const Menu = (props) => {
       {sessionStorage.accessLevel >= ACCESS_LEVEL_NORMAL_USER ? (
         <button onClick={onLogoutHandler} value="LogOut" name="logout" />
       ) : null}
-    </>
+    </div>
   );
 };
 
