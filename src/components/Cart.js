@@ -61,37 +61,39 @@ const Cart = () => {
   const direction = `/PayPalMessage?payPalMessageType=${paypalMsg.payPalMessageType}`;
 
   return (
-    <div>
+    <>
       <Header />
-      {redirect ? <Navigate to={direction} /> : null}
-      {cartData ? (
-        <>
-          {" "}
-          <h1>Your Cart!!</h1>
-          <form>
-            <input
-              type="number"
-              max={24}
-              min={1}
-              name="months"
-              onChange={onChangeHandler}
-            />
-            <h2>Cost of your rent: {cost}</h2>
-            <PaypalButton
-              env="sandbox"
-              client={client_id}
-              currency="USD"
-              total={cost}
-              onSuccess={onSuccessHandler}
-              onError={onErrorHandler}
-              onCancel={onCancelHandler}
-              style={{ size: "small", color: "blue" }}
-            />
-          </form>
-        </>
-      ) : null}
+      <div className="cart">
+        {redirect ? <Navigate to={direction} /> : null}
+        {cartData ? (
+          <>
+            {" "}
+            <h1>Your Cart!!</h1>
+            <form>
+              <input
+                type="number"
+                max={24}
+                min={1}
+                name="months"
+                onChange={onChangeHandler}
+              />
+              <h2>Cost of your rent: {cost}$</h2>
+              <PaypalButton
+                env="sandbox"
+                client={client_id}
+                currency="USD"
+                total={cost}
+                onSuccess={onSuccessHandler}
+                onError={onErrorHandler}
+                onCancel={onCancelHandler}
+                style={{ size: "small", color: "blue" }}
+              />
+            </form>
+          </>
+        ) : null}
+      </div>
       <CarsDisplay carsData={cartData} fromCart={true} />;
-    </div>
+    </>
   );
 };
 

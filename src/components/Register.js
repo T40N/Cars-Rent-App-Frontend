@@ -53,43 +53,45 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <>
       <Header />
-      {isRegistered ? <Navigate to="/" /> : null}
-      <form onSubmit={onSubmitHandler}>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="text"
-          name="surname"
-          placeholder="surname"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="confirmPassword"
-          onChange={onChangeHandler}
-        />
-        <input type="submit" value="Register" />
-      </form>
-    </div>
+      <div className="login">
+        {isRegistered ? <Navigate to="/" /> : null}
+        <form onSubmit={onSubmitHandler}>
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="text"
+            name="surname"
+            placeholder="surname"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="confirmPassword"
+            onChange={onChangeHandler}
+          />
+          <input type="submit" value="Register" />
+        </form>
+      </div>
+    </>
   );
 };
 
