@@ -7,6 +7,7 @@ const CarsDisplay = (props) => {
         props.carsData.map((car) => {
           return (
             <>
+              {console.log(car)}
               {!car.Ordered ? (
                 <Car
                   name={car.Name}
@@ -22,6 +23,8 @@ const CarsDisplay = (props) => {
                   key={car._id}
                   id={car._id}
                   fromCart={props.fromCart}
+                  fromDeletePage = {props.fromDeletePage}
+                  onDelete={props.onDelete}
                 />
               ) : null}
             </>

@@ -3,6 +3,8 @@ import CarsService from "../services/carsService";
 import CarsDisplay from "./CarsDisplay";
 import SearchBar from "./CarsSearch";
 import Header from "./Header";
+import UsersDisplay from "./UsersDisplay";
+import UsersService from "../services/usersService";
 
 const HomePage = () => {
   const [cars, setCars] = useState([]);
@@ -26,11 +28,32 @@ const HomePage = () => {
     setCars(filtered);
   };
 
+  // const onCarDeleteHandler = () => {
+  //   setCarsChanged(prevCarsChanged => {
+  //     return !prevCarsChanged;
+  //   })
+  // }
+
+  const [users, setUsers] = useState([]);
+  const [usersChanged, setUsersChanged] = useState(false);
+  useEffect(() => {
+    UsersService.getUsers().then((resp) => {
+      setUsers(resp.data);
+    });
+  }, [usersChanged]);
+
+  // const onUserDeleteHandler = () => {
+  //   setUsersChanged(prevUsersChanged => {
+  //     return !prevUsersChanged;
+  //   })
+  // }
+
   return (
     <>
       <Header />
       <SearchBar onSearch={onSearchHandler} />
-      <CarsDisplay carsData={cars} />
+      <CarsDisplay carsData={cars} /*onDelete={onCarDeleteHandler}*/ />
+      {/* <UsersDisplay userData={users} onDelete={onUserDeleteHandler}/> */}
     </>
   );
 };
