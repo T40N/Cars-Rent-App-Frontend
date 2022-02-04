@@ -20,11 +20,13 @@ const CarDelete = () => {
   return (
     <>
       <Header />
-      <CarsDisplay
-        carsData={cars}
-        onDelete={onCarDeleteHandler}
-        fromDeletePage={true}
-      />
+      <div className="cardelete">
+        <CarsDisplay
+          carsData={cars}
+          onDelete={onCarDeleteHandler}
+          fromDeletePage={true}
+        />
+      </div>
     </>
   );
 };

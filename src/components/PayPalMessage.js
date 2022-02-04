@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import Header from "./Header";
 
 const PayPalMessage = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,11 +33,14 @@ const PayPalMessage = (props) => {
   }, []);
 
   return (
-    <div>
-      <h1>{message.heading}</h1>
-      <h2>{message.message}</h2>
-      <Link to="/">HomePage</Link>
-    </div>
+    <>
+      <Header />
+      <div className="paypalmsg">
+        <h1>{message.heading}</h1>
+        <h2>{message.message}</h2>
+        <Link to="/">HomePage</Link>
+      </div>
+    </>
   );
 };
 

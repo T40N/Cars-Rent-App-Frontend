@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Car from "./Car";
 
 const CarsDisplay = (props) => {
@@ -23,7 +24,7 @@ const CarsDisplay = (props) => {
                   key={car._id}
                   id={car._id}
                   fromCart={props.fromCart}
-                  fromDeletePage = {props.fromDeletePage}
+                  fromDeletePage={props.fromDeletePage}
                   onDelete={props.onDelete}
                 />
               ) : null}
@@ -31,7 +32,10 @@ const CarsDisplay = (props) => {
           );
         })
       ) : (
-        <h1>No cars that u could rent! Add some!</h1>
+        <div className="cart">
+          <h1>No cars that u could rent! Add some!</h1>
+          <Link to="/">Home Page</Link>
+        </div>
       )}
     </>
   );

@@ -24,7 +24,9 @@ const DeleteUser = () => {
   return (
     <>
       <Header />
-      <UsersDisplay usersData={users} onDelete={onUserDeleteHandler} />
+      <div className="cardelete">
+        <UsersDisplay usersData={users} onDelete={onUserDeleteHandler} />
+      </div>
     </>
   );
 };

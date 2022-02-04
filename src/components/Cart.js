@@ -1,24 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CarsService from "../services/carsService";
 import CarsDisplay from "./CarsDisplay";
 import PaypalButton from "react-paypal-express-checkout";
 import { SANDBOX_CLIENT_ID } from "../config/global_constants";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Header from "./Header";
 
 const Cart = () => {
+  const ref = useRef();
   const client_id = { sandbox: SANDBOX_CLIENT_ID };
   const [redirect, setRedirect] = useState(false);
   const [paypalMsg, setPayPalMsg] = useState({
     ppId: "",
     payPalMessageType: "",
   });
-  const [cost, setCost] = useState(0);
+  const [cost, setCost] = useState(200);
   const cost_per_month = 200;
   const [cartData, setCartData] = useState();
   useEffect(() => {
     CarsService.getCarsById(sessionStorage.idOfCar).then((res) => {
-      setCartData(res.data);
+      if (res.data) {
+        setCartData([res.data]);
+      }
+      ref.current.value = 1;
     });
   }, []);
 
@@ -58,6 +62,11 @@ const Cart = () => {
     setRedirect(true);
   };
 
+  const clearCartData = () => {
+    sessionStorage.removeItem("idOfCar");
+    setCartData("");
+  };
+
   const direction = `/PayPalMessage?payPalMessageType=${paypalMsg.payPalMessageType}`;
 
   console.log(cartData);
@@ -76,6 +85,7 @@ const Cart = () => {
                 min={1}
                 name="months"
                 onChange={onChangeHandler}
+                ref={ref}
               />
               <h2>Cost of your rent: {cost}$</h2>
               <PaypalButton
@@ -89,6 +99,7 @@ const Cart = () => {
                 style={{ size: "small", color: "blue" }}
               />
             </form>
+            <button onClick={clearCartData}>Clear car data</button>
           </>
         ) : null}
       </div>

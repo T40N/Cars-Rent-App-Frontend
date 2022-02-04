@@ -61,68 +61,70 @@ const AddCar = () => {
   };
 
   return (
-    <div>
-      {isAddedIn ? <Navigate to="/" /> : null}
+    <>
       <Header />
-      <form onSubmit={onSubmitHandler}>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="Miles_per_Gallon"
-          placeholder="Miles_per_Gallon"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="Cylinders"
-          placeholder="Cylinders"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="Displacement"
-          placeholder="Displacement"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="Horsepower"
-          placeholder="Horsepower"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="Weight_in_lbs"
-          placeholder="Weight_in_lbs"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="Acceleration"
-          placeholder="Acceleration"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="date"
-          name="Year"
-          placeholder="Year"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="text"
-          name="Origin"
-          placeholder="Origin"
-          onChange={onChangeHandler}
-        />
+      <div className="addCar">
+        {isAddedIn ? <Navigate to="/" /> : null}
+        <form onSubmit={onSubmitHandler}>
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            name="Miles_per_Gallon"
+            placeholder="Miles_per_Gallon"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            name="Cylinders"
+            placeholder="Cylinders"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            name="Displacement"
+            placeholder="Displacement"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            name="Horsepower"
+            placeholder="Horsepower"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            name="Weight_in_lbs"
+            placeholder="Weight_in_lbs"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="number"
+            name="Acceleration"
+            placeholder="Acceleration"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="date"
+            name="Year"
+            placeholder="Year"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="text"
+            name="Origin"
+            placeholder="Origin"
+            onChange={onChangeHandler}
+          />
 
-        <input type="submit" value="Add Car"></input>
-      </form>
-    </div>
+          <input type="submit" value="Add Car"></input>
+        </form>
+      </div>
+    </>
   );
 };
 

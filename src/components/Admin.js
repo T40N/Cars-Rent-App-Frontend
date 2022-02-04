@@ -41,20 +41,21 @@ const Admin = () => {
     });
   }, []);
 
-
   return (
-    <div>
+    <>
       <Header />
-      <h1>Name: {state.name}</h1>
-      <h1>Surname: {state.surname}</h1>
-      <h1>Email: {state.email}</h1>
-      <h2>Access level: {state.accessLevel}</h2>
-      <h5>0 - Guest</h5>
-      <h5>1 - Normal User</h5>
-      <h5>2 - Admin</h5>
-      <Link to="/deletecar">Delete car</Link>
-      <Link to="/deleteuser">Delete user</Link>
-    </div>
+      <div className="admin">
+        <h1>Name: {state.name}</h1>
+        <h1>Surname: {state.surname}</h1>
+        <h1>Email: {state.email}</h1>
+        <h2>Access level: {state.accessLevel}</h2>
+        <h5>0 - Guest</h5>
+        <h5>1 - Normal User</h5>
+        <h5>2 - Admin</h5>
+        <Link to="/deletecar">Delete car</Link>
+        <Link to="/deleteuser">Delete user</Link>
+      </div>
+    </>
   );
 };
 

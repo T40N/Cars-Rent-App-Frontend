@@ -15,7 +15,7 @@ const User = (props) => {
   };
 
   return (
-    <div>
+    <div className="car">
       {redirect ? (
         <>
           <Navigate to="/" /> {setRedirect(false)}{" "}

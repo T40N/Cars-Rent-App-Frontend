@@ -5,6 +5,8 @@ import { SERVER_HOST } from "../config/global_constants";
 import Header from "./Header";
 
 const Register = () => {
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const [passwordErr, setPasswordErr] = useState("");
   const [registerData, setRegisterData] = useState({
     name: "",
     surname: "",
@@ -26,7 +28,17 @@ const Register = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-
+    if (!passwordRegex.test(registerData.password)) {
+      setPasswordErr(
+        "Password should be minimum eight characters, at least one letter and one number"
+      );
+      return;
+    }
+    if (registerData.password !== registerData.confirmPassword) {
+      setPasswordErr("Password and confirm password should be identical");
+      return;
+    }
+    setPasswordErr("");
     axios.defaults.withCredentials = true;
     axios
       .post(`${SERVER_HOST}/users/register`, {
@@ -57,6 +69,7 @@ const Register = () => {
       <Header />
       <div className="login">
         {isRegistered ? <Navigate to="/" /> : null}
+        {passwordErr ? <h3 className="error">{passwordErr}</h3> : null}
         <form onSubmit={onSubmitHandler}>
           <input
             type="text"
