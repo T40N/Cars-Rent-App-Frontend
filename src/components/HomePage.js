@@ -49,12 +49,16 @@ const HomePage = () => {
   // }
 
   return (
-    <>
+    <div className="container">
       <Header />
+      <div className="homepageText">
+        <h1>Welcom to CarsRent!</h1>
+        <h3>Best rent shop with old cars!</h3>
+        <h4>All cars only 200$ per month!</h4>
+      </div>
       <SearchBar onSearch={onSearchHandler} />
-      <CarsDisplay carsData={cars} /*onDelete={onCarDeleteHandler}*/ />
-      {/* <UsersDisplay userData={users} onDelete={onUserDeleteHandler}/> */}
-    </>
+      <CarsDisplay carsData={cars} />
+    </div>
   );
 };
 

@@ -50,25 +50,27 @@ const Login = () => {
   };
 
   return (
-    <div>
-      {isLoggedIn ? <Navigate to="/" /> : null}
+    <>
       <Header />
-      <form onSubmit={onSubmitHandler}>
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          onChange={onChangeHandler}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          onChange={onChangeHandler}
-        />
-        <input type="submit" value="Log In" />
-      </form>
-    </div>
+      <div className="login">
+        {isLoggedIn ? <Navigate to="/" /> : null}
+        <form onSubmit={onSubmitHandler}>
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            onChange={onChangeHandler}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={onChangeHandler}
+          />
+          <input type="submit" value="Log In" />
+        </form>
+      </div>
+    </>
   );
 };
 

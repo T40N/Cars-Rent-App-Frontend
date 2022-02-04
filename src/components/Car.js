@@ -8,13 +8,13 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 const Car = (props) => {
-  const [redirect, setRedirect] = useState(false);
+  const [showButton, setShowButton] = useState(true);
   let kg = (props.weight * 0.45359237).toFixed(2);
   let date = new Date(props.year);
 
   const onAddToCartHandler = () => {
     sessionStorage.idOfCar = props.id;
-    setRedirect(true);
+    setShowButton(false);
   };
 
   const onCarDeleteHandler = () => {
@@ -25,12 +25,7 @@ const Car = (props) => {
   };
 
   return (
-    <div>
-      {redirect ? (
-        <>
-          <Navigate to="/" /> {setRedirect(false)}{" "}
-        </>
-      ) : null}
+    <div className="car">
       <h1>{props.name}</h1>
       <h3>Miles per galon: {props.miles}</h3>
       <h3>Cylinders: {props.cylinders}</h3>

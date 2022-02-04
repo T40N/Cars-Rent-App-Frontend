@@ -10,6 +10,7 @@ import PayPalMessage from "./components/PayPalMessage";
 import AddCar from "./components/AddCar";
 import DeleteUser from "./components/DeleteUser";
 import CarDelete from "./components/CarDelete";
+import "./components/style.css";
 
 function App() {
   if (typeof sessionStorage.accessLevel === "undefined") {

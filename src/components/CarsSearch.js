@@ -8,11 +8,13 @@ const SearchBar = (props) => {
     props.onSearch(ref.current.value);
   };
   return (
-    <form onSubmit={onSubmitHandler} className="searchForm">
-      <h4>Search</h4>
-      <input type="text" name="search" placeholder="search" ref={ref} />
-      <input type="submit" value="Search" />
-    </form>
+    <div className="searchForm">
+      <form onSubmit={onSubmitHandler}>
+        <h4>Search</h4>
+        <input type="text" name="search" placeholder="search" ref={ref} />
+        <input type="submit" value="Search" />
+      </form>
+    </div>
   );
 };
 

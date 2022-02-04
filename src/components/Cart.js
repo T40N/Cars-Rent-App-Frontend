@@ -15,10 +15,10 @@ const Cart = () => {
   });
   const [cost, setCost] = useState(0);
   const cost_per_month = 200;
-  const [cartData, setCartData] = useState([]);
+  const [cartData, setCartData] = useState();
   useEffect(() => {
     CarsService.getCarsById(sessionStorage.idOfCar).then((res) => {
-      setCartData([res.data]);
+      setCartData(res.data);
     });
   }, []);
 
@@ -60,38 +60,40 @@ const Cart = () => {
 
   const direction = `/PayPalMessage?payPalMessageType=${paypalMsg.payPalMessageType}`;
 
+  console.log(cartData);
   return (
-    <div>
+    <>
       <Header />
-      {redirect ? <Navigate to={direction} /> : null}
-      {cartData ? (
-        <>
-          {" "}
-          <h1>Your Cart!!</h1>
-          <form>
-            <input
-              type="number"
-              max={24}
-              min={1}
-              name="months"
-              onChange={onChangeHandler}
-            />
-            <h2>Cost of your rent: {cost}</h2>
-            <PaypalButton
-              env="sandbox"
-              client={client_id}
-              currency="USD"
-              total={cost}
-              onSuccess={onSuccessHandler}
-              onError={onErrorHandler}
-              onCancel={onCancelHandler}
-              style={{ size: "small", color: "blue" }}
-            />
-          </form>
-        </>
-      ) : null}
+      <div className="cart">
+        {redirect ? <Navigate to={direction} /> : null}
+        {cartData ? (
+          <>
+            <h1>Your Cart!!</h1>
+            <form>
+              <input
+                type="number"
+                max={24}
+                min={1}
+                name="months"
+                onChange={onChangeHandler}
+              />
+              <h2>Cost of your rent: {cost}$</h2>
+              <PaypalButton
+                env="sandbox"
+                client={client_id}
+                currency="USD"
+                total={cost}
+                onSuccess={onSuccessHandler}
+                onError={onErrorHandler}
+                onCancel={onCancelHandler}
+                style={{ size: "small", color: "blue" }}
+              />
+            </form>
+          </>
+        ) : null}
+      </div>
       <CarsDisplay carsData={cartData} fromCart={true} />;
-    </div>
+    </>
   );
 };
 
