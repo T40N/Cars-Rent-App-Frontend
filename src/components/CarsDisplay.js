@@ -22,6 +22,7 @@ const CarsDisplay = (props) => {
                   key={car._id}
                   id={car._id}
                   fromCart={props.fromCart}
+                  onDelete={props.onDelete}
                 />
               ) : null}
             </>

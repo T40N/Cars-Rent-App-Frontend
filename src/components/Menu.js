@@ -51,10 +51,13 @@ const Menu = (props) => {
         </>
       ) : null}
       {sessionStorage.accessLevel == ACCESS_LEVEL_ADMIN ? (
-        <Link to="/admin">Admin Page</Link>
+        <>
+          <Link to="/admin">Admin Page</Link>
+          <Link to="/addcar">Add Car</Link>
+        </>
       ) : null}
       {sessionStorage.accessLevel >= ACCESS_LEVEL_NORMAL_USER ? (
-        <button onClick={onLogoutHandler} value="LogOut" name="logout" />
+        <button onClick={onLogoutHandler} value="LogOut" name="logout" >LogOut</button>
       ) : null}
     </>
   );
