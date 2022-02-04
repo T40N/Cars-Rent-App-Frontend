@@ -35,7 +35,7 @@ const Menu = (props) => {
     <>
       {redirtect ? (
         <>
-          <Navigate to="/" /> {setTimeout(setRedirect(false), 400)}
+          <Navigate to="/" />
         </>
       ) : null}
       {sessionStorage.accessLevel == ACCESS_LEVEL_GUEST ? (
