@@ -8,6 +8,8 @@ import Cart from "./components/Cart";
 import { ACCESS_LEVEL_GUEST } from "./config/global_constants";
 import PayPalMessage from "./components/PayPalMessage";
 import AddCar from "./components/AddCar";
+import DeleteUser from "./components/DeleteUser";
+import CarDelete from "./components/CarDelete";
 
 function App() {
   if (typeof sessionStorage.accessLevel === "undefined") {
@@ -26,11 +28,9 @@ function App() {
         <Route exac path="/profile" element={<Profile />} />
         <Route exac path="/admin" element={<Admin />} />
         <Route exac path="/addcar" element={<AddCar />} />
-        <Route
-          exact
-          path="/PayPalMessage"
-          element={<PayPalMessage />}
-        />
+        <Route exac path="/deleteuser" element={<DeleteUser />} />
+        <Route exac path="/deletecar" element={<CarDelete />} />
+        <Route exact path="/PayPalMessage" element={<PayPalMessage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -29,9 +29,11 @@ const AddCar = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    let date = new Date(addCarData.Year);
+    console.log(date);
     axios.defaults.withCredentials = true;
     axios
-      .post(`${SERVER_HOST}/cars}`, {
+      .post(`${SERVER_HOST}/cars`, {
         name: addCarData.name,
         Miles_per_Gallon: addCarData.Miles_per_Gallon,
         Cylinders: addCarData.Cylinders,
@@ -39,7 +41,7 @@ const AddCar = () => {
         Horsepower: addCarData.Horsepower,
         Weight_in_lbs: addCarData.Weight_in_lbs,
         Acceleration: addCarData.Acceleration,
-        Year: addCarData.Year,
+        Year: date,
         Origin: addCarData.Origin,
       })
       .then((res) => {
@@ -106,7 +108,7 @@ const AddCar = () => {
           onChange={onChangeHandler}
         />
         <input
-          type="number"
+          type="date"
           name="Year"
           placeholder="Year"
           onChange={onChangeHandler}
@@ -117,8 +119,8 @@ const AddCar = () => {
           placeholder="Origin"
           onChange={onChangeHandler}
         />
-        
-        <input type="submit" value="Add Car" ></input>
+
+        <input type="submit" value="Add Car"></input>
       </form>
     </div>
   );

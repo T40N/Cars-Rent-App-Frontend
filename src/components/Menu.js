@@ -35,7 +35,7 @@ const Menu = (props) => {
     <>
       {redirtect ? (
         <>
-          <Navigate to="/" /> {setRedirect(false)}
+          <Navigate to="/" /> {setTimeout(setRedirect(false), 400)}
         </>
       ) : null}
       {sessionStorage.accessLevel == ACCESS_LEVEL_GUEST ? (
@@ -57,7 +57,9 @@ const Menu = (props) => {
         </>
       ) : null}
       {sessionStorage.accessLevel >= ACCESS_LEVEL_NORMAL_USER ? (
-        <button onClick={onLogoutHandler} value="LogOut" name="logout" >LogOut</button>
+        <button onClick={onLogoutHandler} value="LogOut" name="logout">
+          LogOut
+        </button>
       ) : null}
     </>
   );
